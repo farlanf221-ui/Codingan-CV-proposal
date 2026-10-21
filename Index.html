@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CV Profesional | Farlan</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f6f8;
+            color: #252525;
+            line-height: 1.7;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #eaeaea;
+            padding: 16px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #222;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #777;
+        }
+
+        nav a {
+            color: #444;
+            text-decoration: none;
+            margin-left: 22px;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #888;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 88vh;
+            padding: 80px 10%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            background: #fff;
+            animation: fadeIn 1s ease;
+        }
+
+        .hero-text {
+            max-width: 650px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 7px 15px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            color: #555;
+            font-size: 12px;
+            margin-bottom: 22px;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 68px);
+            line-height: 1.15;
+            margin-bottom: 18px;
+            letter-spacing: -2px;
+        }
+
+        .hero h1 span {
+            color: #858585;
+        }
+
+        .hero p {
+            color: #666;
+            font-size: 16px;
+            max-width: 500px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 1px solid #222;
+        }
+
+        .btn-dark {
+            background: #222;
+            color: white;
+        }
+
+        .btn-light {
+            background: white;
+            color: #222;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px #00000012;
+        }
+
+        /* PROFILE CARD */
+        .profile-card {
+            min-width: 240px;
+            max-width: 280px;
+            width: 100%;
+            background: #f7f7f7;
+            border: 1px solid #e8e8e8;
+            padding: 35px 25px;
+            text-align: center;
+            border-radius: 16px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e7e7e7;
+            color: #333;
+            font-size: 38px;
+            font-weight: bold;
+        }
+
+        .profile-card h3 {
+            font-size: 22px;
+        }
+
+        .profile-card p {
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .profile-info {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            text-align: left;
+            font-size: 13px;
+            color: #555;
+        }
+
+        .profile-info p {
+            margin: 9px 0;
+        }
+
+        /* GENERAL SECTION */
+        section.content {
+            padding: 85px 10%;
+        }
+
+        .section-label {
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: #888;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 35px;
+            margin-bottom: 35px;
+            letter-spacing: -1px;
+        }
+
+        .section-title span {
+            color: #888;
+        }
+
+        .about-text {
+            max-width: 780px;
+            color: #666;
+            font-size: 16px;
+        }
+
+        /* SKILLS */
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            padding: 28px;
+            background: #fff;
+            border: 1px solid #eaeaea;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-7px);
+            border-color: #bbb;
+            box-shadow: 0 15px 35px #00000008;
+        }
+
+        .skill-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .skill-card p {
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* EXPERIENCE */
+        .experience {
+            background: #fff;
+        }
+
+        .timeline {
+            max-width: 800px;
+            border-left: 2px solid #ddd;
+            margin-left: 8px;
+            padding-left: 30px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 0 0 35px;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -38px;
+            top: 8px;
+            width: 13px;
+            height: 13px;
+            background: #555;
+            border: 3px solid white;
+            outline: 1px solid #555;
+            border-radius: 50%;
+        }
+
+        .year {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 7px;
+        }
+
+        .timeline-item h3 {
+            font-size: 21px;
+            margin-bottom: 8px;
+        }
+
+        .timeline-item p {
+            color: #666;
+            font-size: 15px;
+        }
+
+        .award {
+            display: inline-block;
+            background: #f1f1f1;
+            padding: 5px 12px;
+            margin-top: 12px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* CONTACT */
+        .contact-box {
+            background: white;
+            border: 1px solid #eaeaea;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .contact-box p {
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background: white;
+            border-top: 1px solid #eaeaea;
+            padding: 25px;
+            text-align: center;
+            font-size: 13px;
+            color: #888;
+        }
+
+        /* SCROLL ANIMATION */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 800px) {
+            nav {
+                padding: 15px 5%;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav a {
+                margin: 0 7px;
+                font-size: 12px;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 70px 7%;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .profile-card {
+                max-width: 320px;
+            }
+
+            section.content {
+                padding: 65px 7%;
+            }
+
+            .skills {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 29px;
+            }
+        }
+
+        /* PRINT / SAVE AS PDF */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+
+            nav,
+            .buttons,
+            .contact,
+            footer {
+                display: none !important;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 20px;
+                animation: none;
+            }
+
+            .profile-card {
+                animation: none;
+            }
+
+            section.content {
+                padding: 25px 20px;
+            }
+
+            .reveal {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .skill-card,
+            .profile-card {
+                break-inside: avoid;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">FARLAN<span>.</span></div>
+
+        <div>
+            <a href="#about">Profil</a>
+            <a href="#skills">Keahlian</a>
+            <a href="#experience">Pengalaman</a>
+            <a href="#contact">Kontak</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="hero-text">
+            <div class="badge">CURRICULUM VITAE</div>
+
+            <h1>Halo, saya<br><span>Farlan.</span></h1>
+
+            <p>
+                Saya adalah pribadi yang memiliki semangat untuk
+                belajar, berkembang, bekerja sama dalam tim,
+                dan menghadapi tantangan baru.
+            </p>
+
+            <div class="buttons">
+                <a href="#about" class="btn btn-dark">
+                    Lihat Profil
+                </a>
+
+                <button onclick="window.print()" class="btn btn-light">
+                    Cetak / Simpan PDF
+                </button>
+            </div>
+        </div>
+
+        <div class="profile-card">
+            <div class="avatar">F</div>
+
+            <h3>Farlan</h3>
+            <p>Pelajar | Calon Profesional</p>
+
+            <div class="profile-info">
+                <p><strong>Umur:</strong> 16 tahun</p>
+                <p><strong>Prestasi:</strong> Juara 2</p>
+                <p><strong>Tahun:</strong> 2023</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- ABOUT -->
+    <section class="content reveal" id="about">
+        <p class="section-label">01 / Tentang Saya</p>
+
+        <h2 class="section-title">
+            Profil <span>Pribadi</span>
+        </h2>
+
+        <p class="about-text">
+            Nama saya Farlan, berusia 16 tahun. Saya memiliki
+            semangat untuk terus belajar dan mengembangkan diri.
+            Saya juga pernah mengikuti turnamen sepak bola
+            antarkecamatan pada tahun 2023 dan berhasil meraih
+            juara kedua. Pengalaman tersebut menjadi kesempatan
+            bagi saya untuk belajar mengenai kerja sama tim,
+            kedisiplinan, tanggung jawab, dan semangat berkompetisi.
+        </p>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="content reveal" id="skills">
+        <p class="section-label">02 / Kemampuan</p>
+
+        <h2 class="section-title">
+            Keahlian & <span>Karakter</span>
+        </h2>
+
+        <div class="skills">
+
+            <div class="skill-card">
+                <h3>Kerja Sama Tim</h3>
+                <p>
+                    Belajar bekerja sama dan berkomunikasi
+                    dengan anggota tim untuk mencapai tujuan bersama.
+                </p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Disiplin</h3>
+                <p>
+                    Berusaha mengikuti aturan, menghargai waktu,
+                    dan menyelesaikan tanggung jawab.
+                </p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Semangat Belajar</h3>
+                <p>
+                    Memiliki kemauan untuk mempelajari hal baru
+                    dan meningkatkan kemampuan diri.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="content experience reveal" id="experience">
+        <p class="section-label">03 / Riwayat</p>
+
+        <h2 class="section-title">
+            Pengalaman & <span>Prestasi</span>
+        </h2>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <p class="year">2023</p>
+
+                <h3>Turnamen Sepak Bola Antarkecamatan</h3>
+
+                <p>
+                    Mengikuti kompetisi sepak bola antarkecamatan
+                    sebagai bagian dari tim. Pengalaman ini membantu
+                    saya memahami pentingnya koordinasi, kedisiplinan,
+                    kerja sama, dan sportivitas.
+                </p>
+
+                <span class="award">Juara 2 🏆</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="content contact reveal" id="contact">
+        <div class="contact-box">
+
+            <p class="section-label">04 / Kontak</p>
+
+            <h2 class="section-title">
+                Mari <span>Terhubung</span>
+            </h2>
+
+            <p>
+                Saya terbuka untuk belajar dan mendapatkan
+                pengalaman baru.
+            </p>
+
+            <p>
+                Tambahkan alamat email atau nomor telepon
+                profesional Anda pada bagian ini.
+            </p>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Farlan | Curriculum Vitae</p>
+    </footer>
+
+    <!-- ANIMATION SCRIPT -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15
+        });
+
+        document.querySelectorAll(".reveal").forEach((element) => {
+            observer.observe(element);
+        });
+    </script>
+
+</body>
+</html>
